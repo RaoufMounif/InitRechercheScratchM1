@@ -1,0 +1,22 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="event_whenflagclicked" id="GR)P:Faoju-:!-@Ic%i#" x="100" y="87">
+    <next>
+      <block type="motion_movesteps" id="r|}KEL}h#+mc^QILDp;:">
+        <value name="STEPS">
+          <shadow type="math_number" id="1ozQ*r]g,ot=aQGnh`;A">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="motion_turnright" id="$XoE?24?;8(hn|fqT@OF">
+            <value name="DEGREES">
+              <shadow type="math_number" id="#Doh$i9+2A5yPZ2)%._H">
+                <field name="NUM">15</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

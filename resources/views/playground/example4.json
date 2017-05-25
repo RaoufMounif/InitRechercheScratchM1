@@ -1,0 +1,400 @@
+{
+	"objName": "Stage",
+	"variables": [{
+			"name": "vy",
+			"value": -3.5165000000000006,
+			"isPersistent": false
+		},
+		{
+			"name": "g",
+			"value": "-.5",
+			"isPersistent": false
+		},
+		{
+			"name": "vx",
+			"value": 1.4580000000000002,
+			"isPersistent": false
+		},
+		{
+			"name": "i",
+			"value": 3,
+			"isPersistent": false
+		},
+		{
+			"name": "d1",
+			"value": 0,
+			"isPersistent": false
+		},
+		{
+			"name": "x",
+			"value": 233.9173278872492,
+			"isPersistent": false
+		},
+		{
+			"name": "acceleration",
+			"value": "-3",
+			"isPersistent": false
+		}],
+	"scripts": [[92,
+			162,
+			[["whenGreenFlag"],
+				["doForever",
+					[["setVar:to:",
+							"x",
+							["+",
+								120,
+								["*",
+									120,
+									["computeFunction:of:", "sin", ["*", ["%", ["timer"], 6.28], ["\/", 180, 3.1415]]]]]],
+						["changeGraphicEffect:by:", "color", 0.1],
+						["setGraphicEffect:to:", "whirl", ["*", 10, ["readVariable", "x"]]]]]]]],
+	"sounds": [{
+			"soundName": "pop",
+			"soundID": -1,
+			"md5": "83a9787d4cb6f3b7632b4ddfebf74367.wav",
+			"sampleCount": 258,
+			"rate": 11025,
+			"format": ""
+		}],
+	"costumes": [{
+			"costumeName": "blue sky2",
+			"baseLayerID": -1,
+			"baseLayerMD5": "7623e679b2baa2e7d48808614820844f.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 240,
+			"rotationCenterY": 180
+		},
+		{
+			"costumeName": "woods",
+			"baseLayerID": -1,
+			"baseLayerMD5": "1e0f7a4c932423b13250b5cb44928109.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 240,
+			"rotationCenterY": 180
+		},
+		{
+			"costumeName": "party",
+			"baseLayerID": -1,
+			"baseLayerMD5": "108160d0e44d1c340182e31c9dc0758a.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 251,
+			"rotationCenterY": 189
+		},
+		{
+			"costumeName": "boardwalk",
+			"baseLayerID": -1,
+			"baseLayerMD5": "de0e54cd11551566f044e7e6bc588b2c.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 480,
+			"rotationCenterY": 360
+		},
+		{
+			"costumeName": "blue sky3",
+			"baseLayerID": -1,
+			"baseLayerMD5": "2024d59c1980e667e8f656134796e2c1.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 240,
+			"rotationCenterY": 179
+		},
+		{
+			"costumeName": "underwater1",
+			"baseLayerID": -1,
+			"baseLayerMD5": "f339c6f31b11ea71d0fb8d607cec392e.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 480,
+			"rotationCenterY": 360
+		},
+		{
+			"costumeName": "underwater2",
+			"baseLayerID": -1,
+			"baseLayerMD5": "1517c21786d2d0edc2f3037408d850bd.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 480,
+			"rotationCenterY": 360
+		},
+		{
+			"costumeName": "stars",
+			"baseLayerID": -1,
+			"baseLayerMD5": "e87fed9c2a968dbeae8c94617e600e8c.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 480,
+			"rotationCenterY": 360
+		},
+		{
+			"costumeName": "parking-ramp",
+			"baseLayerID": -1,
+			"baseLayerMD5": "a7832479977c166ca0057f2a99a73305.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 480,
+			"rotationCenterY": 360
+		},
+		{
+			"costumeName": "backdrop1",
+			"baseLayerID": -1,
+			"baseLayerMD5": "f67dc7de38bac6fbb0ab68e46352521d.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 480,
+			"rotationCenterY": 360
+		},
+		{
+			"costumeName": "backdrop2",
+			"baseLayerID": -1,
+			"baseLayerMD5": "7da4181ee167de7b3f5d1a91880277ff.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 240,
+			"rotationCenterY": 180
+		}],
+	"currentCostumeIndex": 10,
+	"penLayerMD5": "5c81a336fab8be57adc039a8a2b33ca9.png",
+	"penLayerID": -1,
+	"tempoBPM": 60,
+	"videoAlpha": 0.5,
+	"children": [{
+			"objName": "Dot",
+			"variables": [{
+					"name": "vy",
+					"value": 0.9599999999999972,
+					"isPersistent": false
+				},
+				{
+					"name": "vx",
+					"value": -6,
+					"isPersistent": false
+				}],
+			"scripts": [[89,
+					152,
+					[["whenGreenFlag"],
+						["clearPenTrails"],
+						["setSizeTo:", 100],
+						["hide"],
+						["doForever",
+							[["doRepeat", 5, [["createCloneOf", "_myself_"], ["wait:elapsed:from:", ["randomFrom:to:", 0, 0.5]]]],
+								["wait:elapsed:from:", 3]]]]],
+				[250,
+					76,
+					[["whenCloned"],
+						["setVar:to:", "vy", 0],
+						["show"],
+						["lookLike:", ["randomFrom:to:", 1, 10]],
+						["gotoX:y:", -220, 160],
+						["setVar:to:", "vx", ["randomFrom:to:", 5, 10]],
+						["doForever",
+							[["turnLeft:", -15],
+								["stampCostume"],
+								["changeVar:by:", "vy", ["readVariable", "acceleration"]],
+								["changeYposBy:", ["readVariable", "vy"]],
+								["doIf",
+									["|", ["<", ["xpos"], "-225"], [">", ["xpos"], "225"]],
+									[["setVar:to:", "vx", ["*", -1, ["readVariable", "vx"]]]]],
+								["doIfElse",
+									["touching:", "_edge_"],
+									[["doIfElse",
+											[">", ["readVariable", "vy"], "-.2"],
+											[["setVar:to:", "vy", 0], ["deleteClone"]],
+											[["setVar:to:", "vy", ["*", -1, ["readVariable", "vy"]]],
+												["playDrum", ["+", ["costumeIndex"], 10], 0.25],
+												["clearPenTrails"]]]],
+									[["changeXposBy:", ["readVariable", "vx"]]]]]]]]],
+			"sounds": [{
+					"soundName": "C elec bass",
+					"soundID": -1,
+					"md5": "69eee3d038ea0f1c34ec9156a789236d.wav",
+					"sampleCount": 5216,
+					"rate": 22050,
+					"format": ""
+				},
+				{
+					"soundName": "D elec bass",
+					"soundID": -1,
+					"md5": "67a6d1aa68233a2fa641aee88c7f051f.wav",
+					"sampleCount": 5568,
+					"rate": 22050,
+					"format": ""
+				},
+				{
+					"soundName": "E elec bass",
+					"soundID": -1,
+					"md5": "0704b8ceabe54f1dcedda8c98f1119fd.wav",
+					"sampleCount": 5691,
+					"rate": 22050,
+					"format": ""
+				},
+				{
+					"soundName": "F elec bass",
+					"soundID": -1,
+					"md5": "45eedb4ce62a9cbbd2207824b94a4641.wav",
+					"sampleCount": 5312,
+					"rate": 22050,
+					"format": ""
+				},
+				{
+					"soundName": "G elec bass",
+					"soundID": -1,
+					"md5": "97b187d72219b994a6ef6a5a6b09605c.wav",
+					"sampleCount": 5568,
+					"rate": 22050,
+					"format": ""
+				},
+				{
+					"soundName": "C2 elec bass",
+					"soundID": -1,
+					"md5": "56fc995b8860e713c5948ecd1c2ae572.wav",
+					"sampleCount": 5792,
+					"rate": 22050,
+					"format": ""
+				}],
+			"costumes": [{
+					"costumeName": "Red",
+					"baseLayerID": -1,
+					"baseLayerMD5": "76ee414d66fc5a4edd8babea6ea45f35.svg",
+					"bitmapResolution": 1,
+					"rotationCenterX": 9,
+					"rotationCenterY": 9
+				},
+				{
+					"costumeName": "Orange",
+					"baseLayerID": -1,
+					"baseLayerMD5": "90208263a92cb020425606291570396c.svg",
+					"bitmapResolution": 1,
+					"rotationCenterX": 9,
+					"rotationCenterY": 9
+				},
+				{
+					"costumeName": "Yellow",
+					"baseLayerID": -1,
+					"baseLayerMD5": "246f92582435aa9248adb0089cdf2773.svg",
+					"bitmapResolution": 1,
+					"rotationCenterX": 9,
+					"rotationCenterY": 9
+				},
+				{
+					"costumeName": "Green",
+					"baseLayerID": -1,
+					"baseLayerMD5": "4ad04af21e512ccb19cc69754f8776de.svg",
+					"bitmapResolution": 1,
+					"rotationCenterX": 9,
+					"rotationCenterY": 9
+				},
+				{
+					"costumeName": "Blue",
+					"baseLayerID": -1,
+					"baseLayerMD5": "36e43bebae7affe324a0e251951fd959.svg",
+					"bitmapResolution": 1,
+					"rotationCenterX": 9,
+					"rotationCenterY": 9
+				},
+				{
+					"costumeName": "Violet",
+					"baseLayerID": -1,
+					"baseLayerMD5": "bb6edb7484c4409bd6b62a59b04e96ab.svg",
+					"bitmapResolution": 1,
+					"rotationCenterX": 9,
+					"rotationCenterY": 9
+				}],
+			"currentCostumeIndex": 5,
+			"scratchX": -33,
+			"scratchY": 12,
+			"scale": 1,
+			"direction": 90,
+			"rotationStyle": "normal",
+			"isDraggable": false,
+			"indexInLibrary": 1,
+			"visible": false,
+			"spriteInfo": {
+			}
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "vy",
+			"color": 15629590,
+			"label": "vy",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 5,
+			"visible": false
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "g",
+			"color": 15629590,
+			"label": "g",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 32,
+			"visible": false
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "vx",
+			"color": 15629590,
+			"label": "vx",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 59,
+			"visible": false
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "i",
+			"color": 15629590,
+			"label": "i",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 86,
+			"visible": false
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "d1",
+			"color": 15629590,
+			"label": "d1",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 113,
+			"visible": false
+		},
+		{
+			"target": "Stage",
+			"cmd": "getVar:",
+			"param": "acceleration",
+			"color": 15629590,
+			"label": "acceleration",
+			"mode": 1,
+			"sliderMin": 0,
+			"sliderMax": 100,
+			"isDiscrete": true,
+			"x": 5,
+			"y": 140,
+			"visible": false
+		}],
+	"info": {
+		"videoOn": false,
+		"projectID": "119615668",
+		"flashVersion": "MAC 24,0,0,194",
+		"hasCloudData": false,
+		"scriptCount": 3,
+		"spriteCount": 1,
+		"swfVersion": "v454",
+		"userAgent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/56.0.2924.87 Safari\/537.36"
+	}
+}

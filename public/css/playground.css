@@ -1,0 +1,104 @@
+body {
+    background: #c2c2d6/*rgb(36,36,36);*/
+
+}
+a {
+    color: rgb(217,217,217);
+}
+h2 {
+    font-size: 2em;
+    color: #4d0028
+}
+
+
+#blocks {
+
+    position: absolute;
+    left: 45%;
+    right: 1%;
+    top: 10%;
+    bottom: 1%;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+#vm-devtools {
+    color: rgb(217,217,217);
+
+    position: absolute;
+    left: 1%;
+    right: 60%;
+    top: 0;
+    bottom: 1%;
+    width: 20%;
+}
+#blockexplorer, #threadexplorer, #importexport {
+    position: absolute;
+ 
+    overflow: scroll;
+    border: 1px solid #fff;
+    background: rgb(36,36,36);
+    color: rgb(217,217,217);
+    font-family: monospace;
+    font-size: 10pt;
+    width: 480px;
+    height: 360px;
+}
+#tab-blockexplorer, #tab-threadexplorer, #tab-importexport {
+    display: none;
+}
+#importExport {
+    width: 480px;
+    height: 360px;
+    background: rgb(36,36,36);
+    color: rgb(217,217,217);
+}
+#projectId {
+    background: rgb(36,36,36);
+    color: rgb(217,217,217);
+    font-family: monospace;
+    font-size: 10pt;
+}
+ul#playgroundLinks {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+#playgroundLinks li {
+    float: left;
+}
+#playgroundLinks li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 5px 10px;
+}
+#playgroundLinks li a:hover {
+    background-color: #111;
+}
+#commentBox
+{
+    /*position: absolute;
+    left: 50%;
+    right: 5%;
+    top: 10%;
+    bottom: 5%;*/
+}
+#videoBox
+{
+/*    position: absolute;
+    left: 5%;
+    right: 50%;
+    top: 10%;
+    bottom: 5%;
+float: left*/
+}
+#selectProject
+{
+  /*  position: absolute;
+    left: 1%;
+    right: 6%;
+    top: 10%;
+    bottom: 65%;*/
+}

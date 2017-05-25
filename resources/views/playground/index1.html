@@ -1,0 +1,116 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Scratch VM Playground</title>
+    <link rel="stylesheet" href="../../../public/css/playground.css">
+    <link rel="stylesheet" href="../../../public/css/zenburn.css">
+    <link rel="stylesheet" href="../../../public/css/btnStyle.css">
+
+</head>
+<body>
+    <div id="vm-devtools">
+        <h2>Scratch VM Playground</h2>
+        <select id="selectedTarget" multiple style="visibility: hidden;"></select>
+        <div id="projectButtons" class="btn-group">
+            <button id="greenflag">Green flag</button>
+            <button id="stopall">Stop</button>
+        </div>
+        <div style="visibility: hidden;">
+           <input id='turbomode' type='checkbox' />
+       </div>
+       <div style="visibility: hidden;">
+        <input id='compatmode' type='checkbox'/>
+    </div>
+    <br />
+    <ul id="playgroundLinks" style="visibility: hidden;">
+        <li><a id="renderexplorer-link" href="#" ></a></li>
+        <li><a id="threadexplorer-link" href="#" style="visibility: hidden;">Threads</a></li>
+        <li><a id="blockexplorer-link" href="#" style="visibility: hidden;">Block Representation</a></li>
+        <li><a id="importexport-link" href="#" style="visibility: hidden;">Import/Export</a></li>
+    </ul><br />
+    <div id="tab-renderexplorer">
+        Renderer<br />
+        <canvas id="scratch-stage" style="width: 480px; height: 360px;"></canvas><br />
+        <input id='sinfo-x' style="visibility: hidden;"/>
+        <input id='sinfo-y'style="visibility: hidden;" /><br />
+        <input id='sinfo-direction'style="visibility: hidden;" />
+        <input id='sinfo-rotationstyle' style="visibility: hidden;"/><br />
+        <input id='sinfo-visible' style="visibility: hidden;"/>
+        <button id='sinfo-post'style="visibility: hidden;">Post</button>
+    </div>
+    <div id="tab-threadexplorer">
+        Thread explorer
+        <pre id="threadexplorer"></pre>
+    </div>
+    <div id="tab-blockexplorer">
+        Block explorer
+        <pre id="blockexplorer"></pre>
+    </div>
+    <div id="tab-importexport">
+        Import/Export<br />
+        Project ID: <input id="projectId" value="119615668" />
+        <button id="projectLoadButton">Load</button>
+        <button id="createEmptyProject">New Project</button><br />
+        <p>
+            <input type="button" value="Export to XML" onclick="toXml()">
+            &nbsp;
+            <input type="button" value="Import from XML" onclick="fromXml()" id="import">
+            <br /><br />
+            <textarea id="importExport"></textarea>
+        </p>
+    </div> 
+    <!-- ///////////////////////////////////////////////////////////// -->
+    <div class="btn-group" >
+        <button id="refresh"  onclick="refresh();" style="width: 35%">Reset</button>
+        <button id="finish"  onclick="toXml()" style="width: 35%">Finish</button>
+    </div>
+
+    <!-- ///////////////////////////////////////////////////////////// -->
+</div>
+
+<div id="blocks"></div>
+
+<!-- FPS counter, Syntax highlighter, Blocks, Renderer -->
+<script src="../../../public/js/vendor.js"></script>
+<!-- VM Worker -->
+<script src="../../../public/js/scratch-vm.js"></script>
+<!-- Playground -->
+<script src="../../../public/js/playground.js"></script>
+<script>
+    function toXml() {
+        var output = document.getElementById('importExport');
+        var xml = Blockly.Xml.workspaceToDom(workspace);
+
+        output.value = Blockly.Xml.domToPrettyText(xml);
+        alert(output.value);
+        output.focus();
+        output.select();
+
+        //////////////////////////////////////
+        var data = new FormData();
+        data.append("data" , output.value);
+        var xhr = new XMLHttpRequest();
+        //var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
+        xhr.open( 'post', 'saveXml.php', true );
+        xhr.send(data);
+        refresh();
+        ///////////////////////////////////////////
+    }
+
+    function fromXml() {
+        var input = document.getElementById('importExport');
+        var xml = Blockly.Xml.textToDom(input.value);
+        Blockly.Xml.domToWorkspace(workspace, xml);
+    }
+          /////////////////////
+          function refresh()
+          {
+            location.reload();  
+
+        }
+          /////////////////
+      </script>
+  </body>
+  </html>
