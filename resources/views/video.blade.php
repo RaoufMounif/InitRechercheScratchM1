@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-6">
 
-                <h1>Faites votre vidéo dans QQS clics.</h1><br/>
+                <h1>Faites votre vidéo dans quelques clics.</h1><br/>
                 <div id="projectButtons" class=" row">
                     <div class="col-md-6">
                         <button id="greenflag" class="btn btn-success btn-lg">Commencer</button>
@@ -25,14 +25,14 @@
                     <!-- ///////////////////////////////////////////////////////////// -->
                     <div class="row ">
                         <div class="col-md-6 ">
-                            <button id="refresh" onclick="refresh();" class="btn btn-primary btn-lg">Reset</button>
+                            <button id="refresh" onclick="refresh();" class="btn btn-primary btn-lg">Réinitialiser</button>
                         </div>
                         <div class="col-md-6 ">
 
 
 
 
-                            <button id="finish"  onclick="toXml()" class="btn btn-danger btn-lg">Finish</button>
+                            <button id="finish"  onclick="toXml()" class="btn btn-danger btn-lg">Terminer</button>
                             <form id="xmlSubmit" method="POST" action="/video" style="visibility: hidden">
                                 {{csrf_field()}}
                                 <textarea name="xmlVideo" id="xmlVideo" cols="30" rows="10"></textarea>
@@ -72,7 +72,7 @@
             var xml = Blockly.Xml.workspaceToDom(workspace);
 
             output.value = Blockly.Xml.domToPrettyText(xml);
-            alert(output.value);
+
 
             var htmlOutput= document.getElementById('xmlVideo');
             htmlOutput.innerHTML= output.value;
@@ -86,42 +86,6 @@
 
 
 
-//            var data = new FormData();
-//            data.append("data", output.value);
-//
-//            var xhr = new XMLHttpRequest();
-//            //var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-//            xhr.open('post', 'api/saveXml.php', true);
-//            xhr.send(data);
-            //                                output.focus();
-            //                                output.select();
-
-            //////////////////////////////////////
-            /* var lastFileName = document.getElementById('fileName');
-             //alert(lastFileName.value);
-
-             if (lastFileName.value !== null) {
-             var data = new FormData();
-             data.append("data", output.value);
-             data.append("lastFileName", lastFileName.value);
-             var xhr = new XMLHttpRequest();
-             //var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-             xhr.open('post', 'api/saveXml.php', true);
-             xhr.send(data);
-
-             window.location.replace("commentsSite/index.php");
-             //refresh();
-             ///////////////////////////////////////////
-             } else {//this is for the first file
-             var data = new FormData();
-             data.append("data", output.value);
-             data.append("lastFileName", "0");
-             var xhr = new XMLHttpRequest();
-             //var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXObject("Microsoft.XMLHTTP");
-             xhr.open('post', 'api/saveXml.php', true);
-             xhr.send(data);
-             //window.location.replace("commentsSite/index.php");
-             }*/
         }
 
         function fromXml() {

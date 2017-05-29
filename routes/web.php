@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::get('/aide','HelpsController@show');
 //Videos Routes
 
 Route::post('/video','VideosController@store');
@@ -29,5 +30,17 @@ Route::post('/video/{video}/comments','CommentsController@store');
 
 Route::get('/comment','CommentsController@show');
 Route::post('/comment','CommentsController@store');
+
+
+Route::get('/test_admin' , 'AdminController@index');
+Route::get('/test_admin/advanced' , 'AdminController@showAdvanced');
+Route::get('/test_admin/video/{id}' , 'AdminController@showVideo');
+
+Route::get('/test_admin/users' , 'AdminController@showUsers');
+Route::post('/test_admin/videos/user_id' , 'AdminController@showUserVideos');
+Route::get('/test_admin/corpus' , 'AdminController@generateCorpus');
+
+
+
 
 

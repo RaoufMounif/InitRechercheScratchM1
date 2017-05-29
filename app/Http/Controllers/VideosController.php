@@ -6,6 +6,7 @@ use App\Video;
 use Illuminate\Http\Request;
 use DOMDocument;
 use XSLTProcessor;
+use Illuminate\Support\Facades\Storage;
 class VideosController extends Controller
 {
     //
@@ -28,7 +29,10 @@ class VideosController extends Controller
             'pseudo_code' => $parsedVideo,
             'user_id' => auth()->id()
     ]);
+
+
         return back();
+
     //return(view('home'));
     }
 

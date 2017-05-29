@@ -8,15 +8,15 @@ class Comments extends Model
 {
     //
     protected $fillable = [
-        'comment_text', 'vedio_id' , 'user_id'
+        'comment_text', 'video_id' , 'user_id'
     ];
 
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
-    public function vedio()
+    public function videos()
     {
         return $this->belongsTo(Video::class);
     }

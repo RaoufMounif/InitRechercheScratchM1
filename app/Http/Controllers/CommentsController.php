@@ -33,7 +33,7 @@ class CommentsController extends Controller
 
         Comments::create([
             'comment_text' => request('commentText'),
-            'vedio_id' => $video->id,
+            'video_id' => $video->id,
             'user_id' => auth()->id()
         ]);
 
