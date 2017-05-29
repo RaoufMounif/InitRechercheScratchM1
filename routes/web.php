@@ -33,6 +33,7 @@ Route::get('/test_admin' , 'AdminController@index');
 Route::get('/test_admin/advanced' , 'AdminController@showAdvanced');
 Route::get('/test_admin/video/{id}' , 'AdminController@showVideo');
 Route::get('/test_admin/video/{id}/comments' , 'AdminController@showVideoComments');
+Route::get('/test_admin/user/{id}/comments' , 'AdminController@showUserComments');
 Route::get('/test_admin/video/{id}/delete' , 'VideosController@destroy');
 Route::get('/test_admin/comment/{id}/delete' , 'CommentsController@destroy');
 Route::get('/test_admin/users' , 'AdminController@showUsers');

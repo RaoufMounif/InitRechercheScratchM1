@@ -11,7 +11,7 @@
                 <div class="card-block  ">
                     <h4 class="card-title">User Name: &numsp;{{$user->name}}</h4>
                     <pre class="card-text ">{{$user->email}}</pre>
-                    <a href="#" class="btn btn-primary">Voir Commentaires</a>
+                    <a href="/test_admin/user/{{$user->id}}/comments" class="btn btn-primary">Voir Commentaires</a>
                 </div>
             </div>
             <br>

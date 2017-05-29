@@ -48,6 +48,13 @@ class AdminController extends Controller
         return view('admin.comments' , compact('comments'));
     }
 
+    public function showUserComments($id)
+    {
+        $user=User::find($id);
+        $comments= $user->comments()->get();
+        return view('admin.comments' , compact('comments'));
+    }
+
     public function showUsers()
     {
         $users=User::all();
@@ -71,15 +78,7 @@ class AdminController extends Controller
     }
 
 
-    public function showUserComments(Request $request)
-    {
-        $user = User::find($request->get('user_id'));
 
-        //dd($request->get('user_id'));
-        $comments=$user->comments()->get();
-
-        return view('admin.comments',compact('comments') );
-    }
 
     public function generateCorpus()
     {
