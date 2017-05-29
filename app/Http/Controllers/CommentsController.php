@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 class CommentsController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function show(){
         $video = $this->getRandomVideo();
@@ -39,5 +43,13 @@ class CommentsController extends Controller
 
         return back();
 
+    }
+
+
+    public function destroy($id)
+    {
+        $comment=Comments::find($id);
+        $comment->delete();
+        return back();
     }
 }

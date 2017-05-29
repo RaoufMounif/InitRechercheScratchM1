@@ -6,10 +6,15 @@ use App\Video;
 use Illuminate\Http\Request;
 use DOMDocument;
 use XSLTProcessor;
-use Illuminate\Support\Facades\Storage;
+
 class VideosController extends Controller
 {
     //
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function show()
     {
@@ -61,4 +66,12 @@ class VideosController extends Controller
 
 
         }
+
+
+    public function destroy($id)
+    {
+        $video=Video::find($id);
+        $video->delete();
+        return back();
+    }
 }

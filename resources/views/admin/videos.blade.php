@@ -11,7 +11,8 @@
                 <div class="card-block  ">
                     <h4 class="card-title">Pseudo Code: &numsp;{{$video->pseudo_code}}</h4>
                     <pre class="card-text ">{{$video->xml}}</pre>
-                    <a href="#" class="btn btn-primary">Voir Commentaires</a>
+                    <a href="/test_admin/video/{{$video->id}}/comments" class="btn btn-primary">Voir Commentaires</a>
+                    <a href="/test_admin/video/{{$video->id}}/delete" class="btn btn-danger">Supprimer</a>
                 </div>
             </div>
             <br>

@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,71 +26,6 @@ class AdminController extends Controller
         return view('admin.videos',compact('videos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
 
     public function getVideos()
@@ -95,13 +35,18 @@ class AdminController extends Controller
     }
 
 
-
     public function showVideo($id)
     {
         $video=Video::find($id);
         return view('admin.video' , compact('video'));
     }
 
+    public function showVideoComments($id)
+    {
+        $video=Video::find($id);
+        $comments= $video->comments()->get();
+        return view('admin.comments' , compact('comments'));
+    }
 
     public function showUsers()
     {
@@ -111,17 +56,35 @@ class AdminController extends Controller
 
     public function showAdvanced()
     {
-
+        Storage::delete('corpus.txt');
         return view('admin.advanced' );
     }
 
-    public function showUserVideos($id)
+    public function showUserVideos(Request $request)
     {
-        $videos=Video::where('user_id','=', $id);
+        $user = User::find($request->get('user_id'));
+
+        //dd($request->get('user_id'));
+        $videos=$user->videos()->get();//Video::where('user_id','=',$request->get('user_id'));
+
         return view('admin.videos',compact('videos') );
     }
+
+
+    public function showUserComments(Request $request)
+    {
+        $user = User::find($request->get('user_id'));
+
+        //dd($request->get('user_id'));
+        $comments=$user->comments()->get();
+
+        return view('admin.comments',compact('comments') );
+    }
+
     public function generateCorpus()
     {
+        Storage::put('corpus.txt', "");
+
         $temp="";
         $videos= Video::all();
         $contents = "";
@@ -140,14 +103,23 @@ class AdminController extends Controller
 
                 //dd($temp);
             }
-            $contents ="Vidéo ".($video->pseudo_code)." --->  ".$temp;
+            $contents ="**********************\nVidéo pseudo_code  :".($video->pseudo_code)."//////////\nVidéo Commentaires   ".$temp;
 
-            Storage::append('file.txt', $contents);
+            Storage::append('corpus.txt', $contents);
             $temp="";
             $contents="";
 
         }
+        $storedFile = Storage::get('corpus.txt');
 
-        return back();
+
+        return view('admin.Corpus',compact('storedFile'));
+    }
+
+    public function downloadCorpus()
+    {
+        $path = storage_path('app/corpus.txt');
+
+        return response()->download($path);
     }
 }

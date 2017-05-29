@@ -26,4 +26,6 @@ class Video extends Model
         $this->comments()->create(compact('comment_text'));
     }
 
+
+
 }
