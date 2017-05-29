@@ -3,7 +3,7 @@
 <head>
 
 
-    <title> BISCUT</title>
+    <title> BISCUIT</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <script src="js/jquery-1.11.0.min.js"></script>
